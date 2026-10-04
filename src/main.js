@@ -37,7 +37,7 @@ async function onFormSubmit(event) {
     if (totalHits > 0) {
       totalPages = Math.ceil(totalHits / PAGE_SIZE);
       createGallery(images);
-      showLoader();
+      checkLoadMoreBtnStatus();
     } else {
       showError(
         `Sorry, there are no images matching your ${query}. Please try again!`
@@ -47,7 +47,6 @@ async function onFormSubmit(event) {
     showError(error);
   }
   hideLoader();
-  checkLoadMoreBtnStatus();
 }
 
 refs.loadMoreBtn.addEventListener('click', onLoadMoreBtnClick);
