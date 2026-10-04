@@ -65,9 +65,6 @@ async function onLoadMoreBtnClick() {
   }
   hideLoader();
   checkLoadMoreBtnStatus();
-  if (currentPage >= totalPages) {
-    showInfo("We're sorry, but you've reached the end of search results.");
-  }
 }
 
 function showError(message) {
@@ -87,6 +84,7 @@ function showInfo(message) {
 function checkLoadMoreBtnStatus() {
   if (currentPage >= totalPages) {
     hideLoadMoreButton();
+    showInfo("We're sorry, but you've reached the end of search results.");
   } else {
     showLoadMoreButton();
   }
