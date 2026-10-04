@@ -11,6 +11,7 @@ export const refs = {
   gallery: document.querySelector('.gallery'),
   form: document.querySelector('.form'),
   loader: document.querySelector('.loader'),
+  loadMoreBtn: document.querySelector('.load-more-btn'),
 };
 
 export function clearGallery() {
@@ -18,8 +19,7 @@ export function clearGallery() {
 }
 
 export function createGallery(images) {
-  console.log('create : ', images);
-  refs.gallery.innerHTML = images
+  const markup = images
     .map(
       ({
         largeImageURL,
@@ -41,6 +41,7 @@ export function createGallery(images) {
       </li>`
     )
     .join('');
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
   lightbox.refresh();
 }
 
@@ -50,4 +51,12 @@ export function showLoader() {
 
 export function hideLoader() {
   refs.loader.classList.remove('show');
+}
+
+export function showLoadMoreButton() {
+  refs.loadMoreBtn.classList.add('show');
+}
+
+export function hideLoadMoreButton() {
+  refs.loadMoreBtn.classList.remove('show');
 }
